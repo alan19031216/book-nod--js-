@@ -12,7 +12,7 @@ app.use(expressLogging(logger));
 
 // passport
 app.use(passport.initialize());
-require('./routes/API/passport-auth')(passport);
+require('./config/passport-auth')(passport);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
