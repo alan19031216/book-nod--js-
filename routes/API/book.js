@@ -127,26 +127,4 @@ function token(json) {
     return token;
 }
 
-const passportOptions = {
-    jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('jwt'),
-    secretOrKey: "mySecretKey"
-};
-
-const jwtStrategy = new Strategy(passportOptions, (jwt_payload, done) => {
-    console.log("1")
-    const username = jwt_payload.username;
-    // here you would normally fetch the user from your database
-    let authUser = { 
-        username: "alan",
-        password: "abc"
-     };
-    if (authUser.username !== username) {
-        done(new Error('User not found'), null)
-    } else {
-        done(null, authUser)
-    }
-});
-passport.use(jwtStrategy);
-
-
 module.exports = router;
